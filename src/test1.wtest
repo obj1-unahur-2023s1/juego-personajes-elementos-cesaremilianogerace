@@ -1,0 +1,59 @@
+import jugadores.*
+import personajes.*
+import armas.*
+import elementos.*
+
+test "mario recolecta 45, es feliz y castillo tiene defensa en 170" {
+	luisa.personaje(mario)
+	luisa.aparece(aurora)
+	luisa.aparece(castillo)
+	/*
+	- el valor total recolectado por `mario` es 45, 
+	- `mario` es feliz (porque lo último que se encontró, el `castillo`, tiene 20 metros de alto), y 
+	- el `castillo` tiene 170 de defensa. 
+	*/
+	assert.equals(45, mario.recolectado())
+	assert.that(mario.esFeliz())
+	assert.equals(170, castillo.nivelDefensa())
+}
+
+test "mario recolecta 16, no feliz, tipa mide 9, aurora no viva, castillo defensa en 150, jabalina no cargada" {
+	floki.arma(jabalina)
+	luisa.personaje(mario)
+	luisa.aparece(tipa)
+	luisa.personaje(floki)
+	luisa.aparece(aurora)
+	luisa.aparece(castillo)
+	/*
+	- el valor total recolectado por `mario` es 16, 
+	- la altura de la `tipa` es 9 metros, 
+	- `mario` no es feliz, 
+	- `aurora` está muerta, 
+	- la defensa del `castillo` es 150, y 
+	- la `jabalina` no está cargada.
+	*/
+	assert.equals(16, mario.recolectado())
+	assert.equals(9, tipa.altura())
+	assert.notThat(mario.esFeliz())
+	assert.notThat(aurora.vive())
+	assert.equals(150, castillo.nivelDefensa())
+	assert.notThat(jabalina.cargada())
+}
+
+test "mario recolecta 0, aurora vive, castillo defensa en 146, ballesta cargada y con 8 flechas" {
+	floki.arma(ballesta)
+	luisa.personaje(floki)
+	luisa.aparece(aurora)
+	luisa.aparece(castillo)
+	/*
+	- el valor total recolectado por `mario` es 0, 
+	- `aurora` está viva, 
+	- la defensa del `castillo` es 146, y que 
+	- la `ballesta` está cargada, y le quedan 8 flechas.
+	*/
+	assert.equals(0, mario.recolectado())
+	assert.that(aurora.vive())
+	assert.equals(146, castillo.nivelDefensa())
+	assert.that(ballesta.cargada())
+	assert.equals(8, ballesta.flechas())
+}

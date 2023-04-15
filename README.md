@@ -21,7 +21,7 @@ Además: debemos manejar el _nivel de defensa_ del `castillo` (un valor numéric
 El programa debe resolver el encuentro entre un personaje y un elemento.
 
 Para eso, tanto `floki` como `mario` implementan el método `encontrar(elemento)`.
-En el archivo `jugadoresPersonajes.wlk` hay una definición parcial de ambos personajes, que incluye este método en ambos casos. La de `mario` está incompleta, le falta una línea. 
+
 
 
 <br> 
